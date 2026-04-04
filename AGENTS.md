@@ -1,5 +1,11 @@
 # AGENTS.md
 
+## User Instructions
+- When the user says "note" or "remember", update this AGENTS.md file with the information
+
+## Important File Notes
+- `products.json` and `groups.json` are potentially huge and may lack newlines — use `jq` for reading/querying instead of the Read tool
+
 ## Developer Background
 - Experienced JS/TS/Node developer
 - New to Python — explain Python concepts in JS/Node terms when relevant
