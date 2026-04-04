@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "tasnif_service",
+  "project_id": "49a10deb-6c2b-444b-83e6-50b38e2c23a6"
+}

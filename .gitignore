@@ -6,3 +6,8 @@ __pycache__/
 alembic.ini
 .env
 data/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
