@@ -1,0 +1,26 @@
+[project]
+name = "tasnif-service"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "ravshansbox", email = "ravshansbox@gmail.com"}
+]
+requires-python = ">=3.12"
+dependencies = [
+    "sqlalchemy>=2.0.49,<3.0.0",
+    "fastapi>=0.135.3,<0.136.0",
+    "uvicorn>=0.43.0,<0.44.0"
+]
+
+[project.scripts]
+tasnif-service = "main:app"
+
+[tool.poe.tasks]
+dev = {cmd = "uvicorn main:app --reload", help = "Start dev server"}
+test = {cmd = "pytest", help = "Run tests"}
+lint = {cmd = "ruff check .", help = "Lint code"}
+seed = {cmd = "python seed.py", help = "Seed database with JSON data"}
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
