@@ -1,8 +1,7 @@
 import json
 import os
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
+from sqlmodel import Session, create_engine
 from models import Product, Package, Group
 
 load_dotenv()

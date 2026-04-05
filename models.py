@@ -1,46 +1,44 @@
-from sqlalchemy import Column, Integer, String, BigInteger, ForeignKey
-from sqlalchemy.orm import DeclarativeBase, relationship
+from typing import Optional
+from sqlmodel import Field, Relationship, SQLModel
 
 
-class Base(DeclarativeBase):
-    pass
-
-
-class Product(Base):
+class Product(SQLModel, table=True):
     __tablename__ = "products"
 
-    mxik = Column(String, primary_key=True)
-    mxik_name_uz = Column(String)
-    mxik_name_ru = Column(String)
-    mxik_name_lat = Column(String)
-    label_for_check = Column(Integer)
-    international_code = Column(String)
-    use_package = Column(Integer)
-    created_at = Column(BigInteger)
-    update_at = Column(BigInteger)
-    label = Column(Integer)
-    cash_sale = Column(Integer)
+    mxik: str = Field(primary_key=True)
+    mxik_name_uz: Optional[str] = None
+    mxik_name_ru: Optional[str] = None
+    mxik_name_lat: Optional[str] = None
+    label_for_check: Optional[int] = None
+    international_code: Optional[str] = None
+    use_package: Optional[int] = None
+    created_at: Optional[int] = None
+    update_at: Optional[int] = None
+    label: Optional[int] = None
+    cash_sale: Optional[int] = None
 
-    packages = relationship("Package", back_populates="product")
+    # Relationship to packages
+    packages: list["Package"] = Relationship(back_populates="product")
 
 
-class Package(Base):
+class Package(SQLModel, table=True):
     __tablename__ = "packages"
 
-    code = Column(Integer, primary_key=True)
-    mxik_code = Column(String, ForeignKey("products.mxik"))
-    name_uz = Column(String)
-    name_ru = Column(String)
-    name_lat = Column(String)
-    package_type = Column(String)
+    code: int = Field(primary_key=True)
+    mxik_code: str = Field(foreign_key="products.mxik")
+    name_uz: Optional[str] = None
+    name_ru: Optional[str] = None
+    name_lat: Optional[str] = None
+    package_type: Optional[str] = None
 
-    product = relationship("Product", back_populates="packages")
+    # Relationship to product
+    product: Optional[Product] = Relationship(back_populates="packages")
 
 
-class Group(Base):
+class Group(SQLModel, table=True):
     __tablename__ = "groups"
 
-    group_code = Column(Integer, primary_key=True)
-    name_uz = Column(String)
-    name_ru = Column(String)
-    name_lat = Column(String)
+    group_code: int = Field(primary_key=True)
+    name_uz: Optional[str] = None
+    name_ru: Optional[str] = None
+    name_lat: Optional[str] = None
